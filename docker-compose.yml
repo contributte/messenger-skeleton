@@ -1,0 +1,36 @@
+version: '3.6'
+
+services:
+    web:
+        image: dockette/web:php-81
+        volumes:
+            - .:/srv
+        ports:
+            - 8080:80
+        depends_on:
+            - database
+            - redis
+        environment:
+            NETTE_DEBUG: 1
+
+    database:
+        image: postgres:15
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: contributte
+            POSTGRES_DB: contributte
+
+    redis:
+        image: redis:7
+        command: redis-server --requirepass 'contributte'
+        ports:
+            - 6379:6379
+
+    adminer:
+        image: dockette/adminer:dg
+        ports:
+            - 8081:80
+        depends_on:
+            - database
+            - redis
