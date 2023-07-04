@@ -9,6 +9,7 @@
 		<properties>
 			<property name="rootNamespaces" type="array">
 				<element key="app" value="App"/>
+				<element key="tests" value="Tests"/>
 			</property>
 		</properties>
 	</rule>

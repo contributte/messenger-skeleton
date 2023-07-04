@@ -17,7 +17,7 @@ final class LoggerService
 	public function write(string $message): void
 	{
 		FileSystem::createDir(dirname($this->file));
-		file_put_contents($this->file, Json::encode(['date' => time(), 'message' => $message]), FILE_APPEND);
+		file_put_contents($this->file, Json::encode(['date' => time(), 'message' => $message]) . "\n", FILE_APPEND);
 	}
 
 	/**
@@ -29,7 +29,11 @@ final class LoggerService
 
 		$messages = [];
 		foreach ($lines as $line) {
-			$messages[] = Json::decode($line);
+			if (trim($line) === '') {
+				continue;
+			}
+
+			$messages[] = Json::decode(trim($line), true);
 		}
 
 		return $messages;
