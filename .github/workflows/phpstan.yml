@@ -4,7 +4,7 @@ on:
   pull_request:
 
   push:
-    branches: ["*"]
+    branches: [ "*" ]
 
   schedule:
     - cron: "0 8 * * 1"
@@ -13,3 +13,5 @@ jobs:
   phpstan:
     name: "Phpstan"
     uses: contributte/.github/.github/workflows/phpstan.yml@v1
+    with:
+      make: "init phpstan"
