@@ -1,4 +1,0 @@
-sentry:
-	enable: true
-	client:
-		dsn: "https://FILLME@FILLME.ingest.sentry.io/1FILLME"
