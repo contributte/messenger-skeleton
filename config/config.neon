@@ -57,6 +57,7 @@ nettrine.dbal:
 		password: contributte
 		dbname: contributte
 		port: 5432
+		serverVersion: 15.0
 
 nettrine.orm:
 	configuration:
