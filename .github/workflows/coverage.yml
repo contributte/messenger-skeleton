@@ -1,10 +1,11 @@
-name: "Coverage"
+name: "Nette Tester"
 
 on:
   pull_request:
+  workflow_dispatch:
 
   push:
-    branches: [ "*" ]
+    branches: ["*"]
 
   schedule:
     - cron: "0 8 * * 1"
@@ -14,4 +15,5 @@ jobs:
     name: "Nette Tester"
     uses: contributte/.github/.github/workflows/nette-tester-coverage.yml@v1
     with:
+      php: "8.2"
       make: "init coverage"
