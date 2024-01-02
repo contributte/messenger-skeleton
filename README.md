@@ -31,7 +31,7 @@ Main goal is to provide example of first class integration of [Symfony Messenger
 
 ## Installation
 
-You will need `PHP 8.1+` and [Composer](https://getcomposer.org/).
+You will need `PHP 8.2+` and [Composer](https://getcomposer.org/).
 
 Create project using composer.
 
