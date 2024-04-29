@@ -1288,16 +1288,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.8.3",
+            "version": "3.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "db922ba9436b7b18a23d1653a0b41ff2369ca41c"
+                "reference": "b05e48a745f722801f55408d0dbd8003b403dbbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/db922ba9436b7b18a23d1653a0b41ff2369ca41c",
-                "reference": "db922ba9436b7b18a23d1653a0b41ff2369ca41c",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/b05e48a745f722801f55408d0dbd8003b403dbbd",
+                "reference": "b05e48a745f722801f55408d0dbd8003b403dbbd",
                 "shasum": ""
             },
             "require": {
@@ -1381,7 +1381,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.8.3"
+                "source": "https://github.com/doctrine/dbal/tree/3.8.4"
             },
             "funding": [
                 {
@@ -1397,7 +1397,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-03T15:55:06+00:00"
+            "time": "2024-04-25T07:04:44+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -4124,16 +4124,16 @@
         },
         {
             "name": "symfony/doctrine-messenger",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/doctrine-messenger.git",
-                "reference": "227cbb2cda296d724a8e08376ad6db73a0335538"
+                "reference": "78ec63bf2437187ac70ca13a2db3f2a8e41b3493"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/doctrine-messenger/zipball/227cbb2cda296d724a8e08376ad6db73a0335538",
-                "reference": "227cbb2cda296d724a8e08376ad6db73a0335538",
+                "url": "https://api.github.com/repos/symfony/doctrine-messenger/zipball/78ec63bf2437187ac70ca13a2db3f2a8e41b3493",
+                "reference": "78ec63bf2437187ac70ca13a2db3f2a8e41b3493",
                 "shasum": ""
             },
             "require": {
@@ -4176,7 +4176,7 @@
             "description": "Symfony Doctrine Messenger Bridge",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/doctrine-messenger/tree/v7.0.6"
+                "source": "https://github.com/symfony/doctrine-messenger/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -4192,7 +4192,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-19T09:26:35+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
