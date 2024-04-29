@@ -3820,16 +3820,16 @@
         },
         {
             "name": "symfony/amqp-messenger",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/amqp-messenger.git",
-                "reference": "e65375faa77103493948c5d46b59bebde93aa0b1"
+                "reference": "65ed12f46fc542d9b855af94ced90563cabbbad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/amqp-messenger/zipball/e65375faa77103493948c5d46b59bebde93aa0b1",
-                "reference": "e65375faa77103493948c5d46b59bebde93aa0b1",
+                "url": "https://api.github.com/repos/symfony/amqp-messenger/zipball/65ed12f46fc542d9b855af94ced90563cabbbad7",
+                "reference": "65ed12f46fc542d9b855af94ced90563cabbbad7",
                 "shasum": ""
             },
             "require": {
@@ -3869,7 +3869,7 @@
             "description": "Symfony AMQP extension Messenger Bridge",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/amqp-messenger/tree/v7.0.6"
+                "source": "https://github.com/symfony/amqp-messenger/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -3885,7 +3885,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-08T07:05:25+00:00"
+            "time": "2024-04-18T09:29:19+00:00"
         },
         {
             "name": "symfony/clock",
