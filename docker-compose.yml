@@ -1,5 +1,3 @@
-version: '3.6'
-
 services:
     web:
         image: dockette/web:php-81
