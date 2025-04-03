@@ -2,7 +2,7 @@
 
 <p align=center>
   <a href="https://github.com/contributte/messenger-skeleton/actions"><img src="https://badgen.net/github/checks/contributte/messenger-skeleton/master"></a>
-  <a href="https://coveralls.io/r/contributte/messenger-skeleton"><img src="https://badgen.net/coveralls/c/github/contributte/messenger-skeleton"></a>
+  <a href="https://codecov.io/gh/contributte/messenger-skeleton"><img src="https://badgen.net/codecov/c/github/contributte/messenger-skeleton"></a>
   <a href="https://packagist.org/packages/contributte/messenger-skeleton"><img src="https://badgen.net/packagist/dm/contributte/messenger-skeleton"></a>
   <a href="https://packagist.org/packages/contributte/messenger-skeleton"><img src="https://badgen.net/packagist/v/contributte/messenger-skeleton"></a>
 </p>
@@ -18,59 +18,78 @@
 Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
 </p>
 
+## Overview
+
+This project demonstrates a first-class integration of Symfony Messenger into the Nette Framework. It provides a complete skeleton application showcasing asynchronous message handling, multiple transport configurations, and best practices for implementing message-based architectures.
+
+### Key Features
+
+- Built with PHP 8.2+
+- Powered by Nette Framework packages
+- Integrated Contributte packages
+- Symfony Messenger integration with Redis transport
+- Example of asynchronous message handling
+- Docker-ready configuration
+- Modern development setup with Composer
+
+## Demo
+
 <p align=center>
 	<img src="https://github.com/contributte/messenger-skeleton/blob/master/.docs/assets/screenshot.png?raw=true">
 	<img src="https://github.com/contributte/messenger-skeleton/blob/master/.docs/assets/console.png?raw=true">
 </p>
 
------
+## Getting Started
 
-## Goal
+### Non-Docker Installation
 
-Main goal is to provide example of first class integration of [Symfony Messenger](https://github.com/contributte/messenger) to [Nette](https://nette.org).
+1. Create a new project:
+   ```bash
+   composer create-project -s dev contributte/messenger-skeleton acme
+   ```
 
-## Installation
+2. Install dependencies:
+   ```bash
+   composer install
+   ```
 
-You will need `PHP 8.2+` and [Composer](https://getcomposer.org/).
+3. Start messenger consumer:
+   ```bash
+   make consume
+   ```
 
-Create project using composer.
+4. Start PHP development server:
+   ```bash
+   make dev
+   ```
 
-```bash
-composer create-project -s dev contributte/messenger-skeleton acme
-```
+5. Access the application at http://0.0.0.0:8000
 
-Now you have application installed. It's time to run it.
+### Docker Installation
 
-## Startup
+1. Create a new project:
+   ```bash
+   composer create-project -s dev contributte/messenger-skeleton acme
+   ```
 
-### HTTP
+2. Install dependencies:
+   ```bash
+   composer install
+   ```
 
-You need to spin webserver to display your application.
+3. Start the application using Docker Compose:
 
-```bash
-make dev
-# php -S 0.0.0.0:8000 -t www
-```
+    ```bash
+    docker compose up
+    ```
 
-Then visit [http://localhost:8000](http://localhost:8000) in your browser.
+    To access the container for development tasks (e.g., `composer update`):
 
-### Console
+    ```bash
+    docker compose run web bash
+    ```
 
-You need to run consumer to consume messages.
-
-```bash
-make consume
-# bin/console messenger:consume redis
-```
-
-### Docker
-
-You need to spin docker containers with redis and postgres to store & read messages according to your transports.
-
-```bash
-make docker-up
-# docker compose up
-```
+4. Access the application at http://0.0.0.0:8080
 
 ## Development
 
