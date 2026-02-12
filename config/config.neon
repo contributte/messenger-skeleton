@@ -59,7 +59,6 @@ nettrine.orm:
 	managers:
 		default:
 			connection: default
-			entityManagerDecoratorClass: Nettrine\Extra\EntityManager
 			autoGenerateProxyClasses: %debugMode%
 			mapping:
 				App\Domain:
