@@ -24,13 +24,9 @@ extensions:
 
 	# Nettrine DBAL
 	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
-	nettrine.dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension(%consoleMode%)
 
 	# Nettrine ORM
 	nettrine.orm: Nettrine\ORM\DI\OrmExtension
-	nettrine.orm.cache: Nettrine\ORM\DI\OrmCacheExtension
-	nettrine.orm.console: Nettrine\ORM\DI\OrmConsoleExtension(%consoleMode%)
-	nettrine.orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
 
 # ======================================
 # Extensions (config) ==================
@@ -49,28 +45,32 @@ contributte.messenger:
 nettrine.dbal:
 	debug:
 		panel: %debugMode%
-	configuration:
-	connection:
-		driver: pdo_pgsql
-		host: 0.0.0.0
-		user: postgres
-		password: contributte
-		dbname: contributte
-		port: 5432
-		serverVersion: 15.0
+	connections:
+		default:
+			driver: pdo_pgsql
+			host: 0.0.0.0
+			user: postgres
+			password: contributte
+			dbname: contributte
+			port: 5432
+			serverVersion: "15"
 
 nettrine.orm:
-	configuration:
-		autoGenerateProxyClasses: %debugMode%
-
-nettrine.orm.annotations:
-	mapping:
+	managers:
+		default:
+			connection: default
+			entityManagerDecoratorClass: Nettrine\Extra\EntityManager
+			autoGenerateProxyClasses: %debugMode%
+			mapping:
+				App\Domain:
+					directories: [%appDir%/Domain]
+					namespace: App\Domain
 
 nettrine.migrations:
 	table: doctrine_migrations
 	column: version
-	directory: %appDir%/../db/Migrations
-	namespace: Database\Migrations
+	directories:
+		Database\Migrations: %appDir%/../db/Migrations
 	versionsOrganization: null
 
 # ======================================
