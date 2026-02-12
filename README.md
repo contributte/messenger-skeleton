@@ -24,7 +24,7 @@ This project demonstrates a first-class integration of Symfony Messenger into th
 
 ### Key Features
 
-- Built with PHP 8.2+
+- Built with PHP 8.4+
 - Powered by Nette Framework packages
 - Integrated Contributte packages
 - Symfony Messenger integration with Redis transport
