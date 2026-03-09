@@ -5,13 +5,13 @@ namespace App\UI\Home;
 use App\Domain\LogMessage;
 use App\UI\BasePresenter;
 use Nette\DI\Attributes\Inject;
-use Symfony\Component\Messenger\MessageBus;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 class HomePresenter extends BasePresenter
 {
 
 	#[Inject]
-	public MessageBus $bus;
+	public MessageBusInterface $bus;
 
 	public function handleRedis(): void
 	{
