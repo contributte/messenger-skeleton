@@ -27,7 +27,7 @@
     "nettrine/extra": "^0.2.0",
 
     "symfony/redis-messenger": "^7.0.4",
-    "symfony/doctrine-messenger": "^7.0.2",
+    "symfony/doctrine-messenger": "^8.0.6",
     "symfony/amqp-messenger": "^7.0.3",
     "symfony/var-exporter": "^7.0"
   },
