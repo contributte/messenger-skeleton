@@ -1,106 +1,64 @@
-![](https://heatbadger.now.sh/github/readme/contributte/messenger-skeleton/)
+# Messenger Skeleton
 
-<p align=center>
-  <a href="https://github.com/contributte/messenger-skeleton/actions"><img src="https://badgen.net/github/checks/contributte/messenger-skeleton/master"></a>
-  <a href="https://codecov.io/gh/contributte/messenger-skeleton"><img src="https://badgen.net/codecov/c/github/contributte/messenger-skeleton"></a>
-  <a href="https://packagist.org/packages/contributte/messenger-skeleton"><img src="https://badgen.net/packagist/dm/contributte/messenger-skeleton"></a>
-  <a href="https://packagist.org/packages/contributte/messenger-skeleton"><img src="https://badgen.net/packagist/v/contributte/messenger-skeleton"></a>
-</p>
-<p align=center>
-  <a href="https://packagist.org/packages/contributte/messenger-skeleton"><img src="https://badgen.net/packagist/php/contributte/messenger-skeleton"></a>
-  <a href="https://github.com/contributte/messenger-skeleton"><img src="https://badgen.net/github/license/contributte/messenger-skeleton"></a>
-  <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
-  <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
-  <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
-</p>
+Example Nette application integrating Symfony Messenger through `contributte/messenger`.
 
-<p align=center>
-Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
-</p>
+## Requirements
 
-## Overview
+- PHP 8.4+
+- [Composer](https://getcomposer.org/)
+- PostgreSQL 15 and Redis 7 for the configured Doctrine and Redis transports
 
-This project demonstrates a first-class integration of Symfony Messenger into the Nette Framework. It provides a complete skeleton application showcasing asynchronous message handling, multiple transport configurations, and best practices for implementing message-based architectures.
+## Create a project
 
-### Key Features
+```bash
+composer create-project -s dev contributte/messenger-skeleton acme
+cd acme
+make project
+make init
+```
 
-- Built with PHP 8.4+
-- Powered by Nette Framework packages
-- Integrated Contributte packages
-- Symfony Messenger integration with Redis transport
-- Example of asynchronous message handling
-- Docker-ready configuration
-- Modern development setup with Composer
+`make project` installs dependencies and prepares writable runtime directories. `make init` creates `config/local.neon` for local parameter and service overrides.
 
-## Demo
+## Native services
 
-<p align=center>
-	<img src="https://github.com/contributte/messenger-skeleton/blob/master/.docs/assets/screenshot.png?raw=true">
-	<img src="https://github.com/contributte/messenger-skeleton/blob/master/.docs/assets/console.png?raw=true">
-</p>
+For a native setup, run PostgreSQL and Redis compatible with the checked-in configuration. PostgreSQL must be reachable on port `5432` with database `contributte`, user `postgres`, and password `contributte`. Redis must be reachable on port `6379` and require the password `contributte`.
 
-## Getting Started
+## Docker Compose
 
-### Non-Docker Installation
+The tracked Compose file starts the web application, PostgreSQL, Redis, and Adminer:
 
-1. Create a new project:
-   ```bash
-   composer create-project -s dev contributte/messenger-skeleton acme
-   ```
+```bash
+make docker-up
+```
 
-2. Install dependencies:
-   ```bash
-   composer install
-   ```
+The web application is available at <http://localhost:8080> and Adminer at <http://localhost:8081>. PostgreSQL is exposed on `localhost:5432` with database `contributte`, user `postgres`, and password `contributte`; Redis is exposed on `localhost:6379` and requires password `contributte`.
 
-3. Start messenger consumer:
-   ```bash
-   make consume
-   ```
+## Development and consumer
 
-4. Start PHP development server:
-   ```bash
-   make dev
-   ```
+Start the native PHP development server at <http://localhost:8000>:
 
-5. Access the application at http://0.0.0.0:8000
+```bash
+make dev
+```
 
-### Docker Installation
+The configured `App\Domain\LogMessage` messages are routed to the Redis transport. Consume them in a separate terminal:
 
-1. Create a new project:
-   ```bash
-   composer create-project -s dev contributte/messenger-skeleton acme
-   ```
+```bash
+make consume
+```
 
-2. Install dependencies:
-   ```bash
-   composer install
-   ```
+This runs `bin/console messenger:consume redis` with Xdebug debugging environment variables.
 
-3. Start the application using Docker Compose:
+## Quality checks
 
-    ```bash
-    docker compose up
-    ```
+Run coding-standard and static-analysis checks:
 
-    To access the container for development tasks (e.g., `composer update`):
+```bash
+make qa
+```
 
-    ```bash
-    docker compose run web bash
-    ```
+Run tests:
 
-4. Access the application at http://0.0.0.0:8080
-
-## Development
-
-See [how to contribute](https://contributte.org/contributing.html) to this package.
-
-This package is currently maintaining by these authors.
-
-<a href="https://github.com/f3l1x">
-    <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
-</a>
-
------
-
-Consider to [support](https://contributte.org/partners.html) **contributte** development team. Also thank you for using this project.
+```bash
+make tests
+```
