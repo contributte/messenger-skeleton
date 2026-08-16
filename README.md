@@ -6,7 +6,7 @@ Example Nette application integrating Symfony Messenger through `contributte/mes
 
 - PHP 8.4+
 - [Composer](https://getcomposer.org/)
-- PostgreSQL 15 and Redis 7 for the configured Doctrine and Redis transports
+- Docker Compose, PostgreSQL 15, and Redis 7 for the development-only examples below
 
 ## Create a project
 
@@ -19,35 +19,39 @@ make init
 
 `make project` installs dependencies and prepares writable runtime directories. `make init` creates `config/local.neon` for local parameter and service overrides.
 
-## Native services
+## Development-only native async quick start
 
-For a native setup, run PostgreSQL and Redis compatible with the checked-in configuration. PostgreSQL must be reachable on port `5432` with database `contributte`, user `postgres`, and password `contributte`. Redis must be reachable on port `6379` and require the password `contributte`.
-
-## Docker Compose
-
-The tracked Compose file starts the web application, PostgreSQL, Redis, and Adminer:
+The checked-in configuration connects to PostgreSQL and Redis at `0.0.0.0`. Start the tracked infrastructure services first:
 
 ```bash
-make docker-up
+docker compose up database redis
 ```
 
-The web application is available at <http://localhost:8080> and Adminer at <http://localhost:8081>. PostgreSQL is exposed on `localhost:5432` with database `contributte`, user `postgres`, and password `contributte`; Redis is exposed on `localhost:6379` and requires password `contributte`.
+PostgreSQL is exposed on `localhost:5432` with database `contributte`, user `postgres`, and password `contributte`. Redis is exposed on `localhost:6379` and requires password `contributte`.
 
-## Development and consumer
-
-Start the native PHP development server at <http://localhost:8000>:
+Start the native PHP application in a second terminal:
 
 ```bash
 make dev
 ```
 
-The configured `App\Domain\LogMessage` messages are routed to the Redis transport. Consume them in a separate terminal:
+Then start the Redis consumer in a third terminal:
 
 ```bash
 make consume
 ```
 
-This runs `bin/console messenger:consume redis` with Xdebug debugging environment variables.
+Finally, open <http://localhost:8000> and use **Send message [redis]**. It dispatches `App\Domain\LogMessage('Hello!')` to Redis. The consumer handles the message and appends a JSON line containing `"message":"Hello!"` to `var/tmp/messages.txt`.
+
+## Development-only Compose stack
+
+The tracked Compose file starts the web application alongside PostgreSQL, Redis, and Adminer:
+
+```bash
+make docker-up
+```
+
+The web application is available at <http://localhost:8080> and Adminer at <http://localhost:8081>. The checked-in Messenger and database DSNs use `0.0.0.0`, so use the native async flow above when running the consumer and dispatching messages from the application process.
 
 ## Quality checks
 
